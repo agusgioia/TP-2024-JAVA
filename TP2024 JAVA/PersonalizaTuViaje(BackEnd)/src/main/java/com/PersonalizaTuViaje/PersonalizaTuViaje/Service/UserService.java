@@ -8,6 +8,8 @@ public interface UserService {
 
     List<Usuario> ListaUsuarios();
 
+    Usuario ObtenerUsuario(String id) throws Exception;
+
     Boolean NuevoUsuario(Usuario usuario);
 
     Boolean EditarUsuario(String id,Usuario usuario);

@@ -15,6 +15,11 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    public ResponseEntity ObtenerUsuario(@PathVariable(value = "id")String id)throws Exception  {
+        return new ResponseEntity(service.ObtenerUsuario(id),HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/lista", method = RequestMethod.GET)
     public ResponseEntity ListaUsuarios() {
         return new ResponseEntity(service.ListaUsuarios(), HttpStatus.OK);

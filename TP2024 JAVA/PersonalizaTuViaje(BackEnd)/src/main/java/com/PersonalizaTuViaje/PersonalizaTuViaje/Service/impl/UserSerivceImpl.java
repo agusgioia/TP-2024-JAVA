@@ -42,6 +42,20 @@ public class UserSerivceImpl implements UserService {
     }
 
     @Override
+    public Usuario ObtenerUsuario(String id) throws Exception {
+        ApiFuture<DocumentSnapshot> future = getCollection().document(id).get();
+        DocumentSnapshot document = future.get();
+
+        if (document.exists()){
+            return document.toObject(Usuario.class);
+        }
+        else {
+            return null;
+        }
+
+    }
+
+    @Override
     public Boolean NuevoUsuario(Usuario usuario) {
         Map<String, Object> docData = getObjectMap(usuario);
         ApiFuture<WriteResult> writeResultApiFuture = getCollection().document().create(docData);
